@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
+import ToggleTheme from "./components/ToggleTheme"
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
       <h4 className="border">Hello World</h4>
       <h5 className="border">Hello World</h5>
       <h6 className="border">Hello World</h6>
+      <ToggleTheme />
     </>
   )
 }
