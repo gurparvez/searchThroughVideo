@@ -6,17 +6,14 @@ class Auth {
 		this.instance = axios.create({
 			baseURL: URL,
 			timeout: 1000,
-			transformRequest: [
-				function (data, headers) {
-					const token = localStorage.getItem("token");
-					headers.Authorization = `Bearer ${token}`;
-					return data;
-				},
-			],
 		});
 	}
 
-	async registerUser({ username, password, email }) {
+	createHeader() {
+		return { "Authorization": `Bearer ${localStorage.getItem("token")}` };
+	}
+
+	async register({ username, password, email }) {
 		try {
 			const req = await this.instance({
 				method: "post",
@@ -26,7 +23,6 @@ class Auth {
 					password,
 					email,
 				},
-				transformRequest: [],
 			});
 			return req.data;
 		} catch (error) {
@@ -41,6 +37,7 @@ class Auth {
 				url: "/api/user/token",
 				data: new URLSearchParams({ username, password }),
 			});
+			localStorage.setItem("token", req.data?.token);
 			return req.data;
 		} catch (error) {
 			throw error;
@@ -52,6 +49,7 @@ class Auth {
 			const req = await this.instance({
 				method: "post",
 				url: "/api/user/me",
+				headers: this.createHeader(),
 			});
 			return req.data;
 		} catch (error) {
