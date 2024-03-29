@@ -1,11 +1,9 @@
-import ToggleTheme from "../components/ToggleTheme.jsx";
-
 const Home = () => {
-    return (
-        <>
-            Home
-        </>
-    )
+  return (
+    <div>
+      <h1>Home</h1>
+    </div>
+  )
 }
 
 export default Home

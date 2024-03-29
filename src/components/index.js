@@ -1,5 +1,3 @@
-import ToggleTheme from "./ToggleTheme";
+import ToggleTheme from './ToggleTheme';
 
-export default {
-    ToggleTheme
-}
+export { ToggleTheme };
