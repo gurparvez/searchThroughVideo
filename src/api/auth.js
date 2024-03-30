@@ -46,7 +46,7 @@ class Auth {
 
 
 	async logout(){
-		
+		localStorage.setItem("token","Bearer")
 	}
 
 	async getUser() {
