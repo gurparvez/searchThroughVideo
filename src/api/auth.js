@@ -44,6 +44,11 @@ class Auth {
 		}
 	}
 
+
+	async logout(){
+		
+	}
+
 	async getUser() {
 		try {
 			const req = await this.instance({

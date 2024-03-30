@@ -93,6 +93,30 @@ class Videos {
             throw error;
         }
     }
+
+    async delete(folder_path){
+        try {
+            const req = await this.instance({
+                method: 'delete',
+                url: `/api/videos/delete-folder/${folder_path}`,
+                headers:this.createHeader()
+            });
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async getAll(){
+        try {
+            const req = await this.instance({
+                method: 'psot',
+                url: '/api/videos/get-all-video',
+                headers:this.createHeader()
+            });
+        } catch (error) {
+            throw error
+        }
+    }
 }
 
 const video = new Videos();
