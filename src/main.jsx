@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Home, ContactUs, Login } from './layouts';
+import { Home, ContactUs, Login, Register } from './layouts';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -13,6 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='contact' element={<ContactUs />} />
       </Route>
       <Route path='/login' element={<Login />} />
+      <Route path='/register' element={<Register />} />
     </Routes>
   </BrowserRouter>,
 );
