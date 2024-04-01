@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Button, Input, Logo } from '../components';
 import { NavLink } from 'react-router-dom';
+import { useForm } from 'react-hook-form'
 
 const Register = () => {
-    
+    const [email, setEmail] = useState('');
     const [Username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPass, setConfirmPass] = useState('');
+    const {register, handleSubmitForm} = useForm();
 
     return (
         <section className='bg-gray-50 dark:bg-gray-900'>
@@ -18,6 +20,10 @@ const Register = () => {
                             Create and account
                         </h1>
                         <form className='space-y-4 md:space-y-6'>
+                            <Input
+                                label='email'
+                                {...register("email")}
+                            />
                             <Input
                                 label='Username'
                                 value={Username}
