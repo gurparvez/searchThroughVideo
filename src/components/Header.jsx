@@ -6,7 +6,7 @@ const Header = ({ classname }) => {
   return (
     <div className={`flex flex-row justify-between items-center ${classname}`}>
       <NavLink to='/'>
-        <Logo />
+        <Logo classname='h-10 cursor-pointer' />
       </NavLink>
       <div className='flex *:px-5'>
         <ToggleTheme />
