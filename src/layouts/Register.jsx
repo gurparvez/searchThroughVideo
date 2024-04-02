@@ -1,27 +1,32 @@
 import React, { useState } from 'react';
-import { Button, Input, Logo, Spinner } from '../components';
+import { Button, Input, Logo, ShowError, Spinner } from '../components';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 import auth from '../api/auth';
+import { login } from '../store/authSlice';
 
 const Register = () => {
 
     const {register, handleSubmit} = useForm();
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(false);
+    const [msg, setMsg] = useState('');
     const navigate = useNavigate();
 
     const submit = async (data) => {
         setIsLoading(true);
+        setError(false);
+        setMsg('');
         console.log(data);
         try {
             const res = await auth.register(data);
             if (res) {
                 const user = await auth.login({ username: data.username, password: data.password });
-                dispatch(userData(user));
+                dispatch(login(user));
                 navigate('/');
             } else {
                 setError(true);
-                setmsg(res.message);
+                setMsg(res.message);
             }
         } catch (error) {
             console.log("Error :: register user ::", error);
@@ -45,12 +50,16 @@ const Register = () => {
                             <Input
                                 label='Email'
                                 type="email"
+                                error={error}
+                                readonly={isLoading}
                                 {...register("email", {
                                     required: true,
                                 })}
                             />
                             <Input
                                 label='Username'
+                                error={error}
+                                readonly={isLoading}
                                 {...register("username", {
                                     required: true,
                                 })}
@@ -58,10 +67,16 @@ const Register = () => {
                             <Input
                                 label='Password'
                                 type='password'
+                                error={error}
+                                readonly={isLoading}
                                 {...register("password", {
                                     required: true,
                                 })}
                             />
+                            {
+                                error &&
+                                <ShowError error={msg} />
+                            }
                             <Button
                                 data='Create Account'
                                 type='submit'

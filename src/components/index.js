@@ -6,8 +6,9 @@ import Toggle from './Toggles/Toggle.jsx';
 import Input from './Inputs/Input.jsx';
 import Logo from './Logo.jsx';
 import Spinner from './Loaders/Spinner.jsx';
+import ShowError from './ShowError.jsx';
 
-export { ToggleTheme, Header, Button, ButtonRed, Toggle, Input, Logo, Spinner };
+export { ToggleTheme, Header, Button, ButtonRed, Toggle, Input, Logo, Spinner, ShowError };
 
 /*
 TODO: find a way to format it like this:
