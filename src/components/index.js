@@ -7,8 +7,20 @@ import Input from './Inputs/Input.jsx';
 import Logo from './Logo.jsx';
 import Spinner from './Loaders/Spinner.jsx';
 import ShowError from './ShowError.jsx';
+import Container from './Container.jsx';
 
-export { ToggleTheme, Header, Button, ButtonRed, Toggle, Input, Logo, Spinner, ShowError };
+export {
+    ToggleTheme,
+    Header,
+    Button,
+    ButtonRed,
+    Toggle,
+    Input,
+    Logo,
+    Spinner,
+    ShowError,
+    Container,
+};
 
 /*
 TODO: find a way to format it like this:
