@@ -8,6 +8,7 @@ import Logo from './Logo.jsx';
 import Spinner from './Loaders/Spinner.jsx';
 import ShowError from './ShowError.jsx';
 import Container from './Container.jsx';
+import FullPage from './Loaders/FullPage.jsx';
 
 export {
     ToggleTheme,
@@ -20,20 +21,5 @@ export {
     Spinner,
     ShowError,
     Container,
+    FullPage,
 };
-
-/*
-TODO: find a way to format it like this:
-
-export { 
-    ToggleTheme,
-    Header,
-    Button, 
-    ButtonRed, 
-    Toggle, 
-    Input, 
-    Logo, 
-    Spinner 
-};
-
-*/
