@@ -9,6 +9,7 @@ import Spinner from './Loaders/Spinner.jsx';
 import ShowError from './ShowError.jsx';
 import Container from './Container.jsx';
 import FullPage from './Loaders/FullPage.jsx';
+import Sidebar from './Sidebar.jsx';
 
 export {
     ToggleTheme,
@@ -22,4 +23,5 @@ export {
     ShowError,
     Container,
     FullPage,
+    Sidebar,
 };

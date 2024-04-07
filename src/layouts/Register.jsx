@@ -17,19 +17,27 @@ const Register = () => {
         setError(false);
         setMsg('');
         console.log(data);
+
         try {
-            const res = await auth.register(data);
-            if (res) {
-                const user = await auth.login({
-                    username: data.username,
-                    password: data.password,
+            auth.register(data)
+                .then(() => {
+                    auth.login({
+                        username: data.username,
+                        password: data.password,
+                    })
+                        .then((user) => {
+                            dispatch(login(user));
+                            navigate('/');
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            navigate('/login');
+                        });
+                })
+                .catch((err) => {
+                    setError(true);
+                    setMsg(err.message);
                 });
-                dispatch(login(user));
-                navigate('/');
-            } else {
-                setError(true);
-                setMsg(res.message);
-            }
         } catch (error) {
             console.log('Error :: register user ::', error);
         }

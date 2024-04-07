@@ -43,7 +43,7 @@ const ToggleTheme = ({ classname }) => {
                 ) : (
                     <MdLightMode size={'30px'} />
                 )}
-                <span className='ms-3 text-lg font-medium text-gray-900 dark:text-gray-300'>
+                <span className='hidden sm:inline ms-3 text-lg font-medium text-gray-900 dark:text-gray-300'>
                     Theme
                 </span>
             </label>
