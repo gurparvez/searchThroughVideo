@@ -4,8 +4,8 @@ import { URL } from "../constant";
 class Auth {
 	constructor() {
 		this.instance = axios.create({
-			baseURL: URL,
-			timeout: 1000,
+			// baseURL: URL,
+			timeout: 60000,
 		});
 	}
 

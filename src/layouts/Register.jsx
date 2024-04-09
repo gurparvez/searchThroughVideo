@@ -26,17 +26,23 @@ const Register = () => {
                         password: data.password,
                     })
                         .then((user) => {
+                            console.log("user: ");
+                            console.log(user);
+                            setIsLoading(false);
                             dispatch(login(user));
                             navigate('/');
                         })
                         .catch((err) => {
+                            console.log("err: ");
                             console.log(err);
+                            // setIsLoading(false);
                             navigate('/login');
                         });
                 })
                 .catch((err) => {
                     setError(true);
                     setMsg(err.message);
+                    setIsLoading(false);
                 });
         } catch (error) {
             console.log('Error :: register user ::', error);
@@ -52,7 +58,7 @@ const Register = () => {
                 <div className='w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700'>
                     <div className='p-6 space-y-4 md:space-y-6 sm:p-8'>
                         <h1 className='text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white'>
-                            Create and account
+                            Create an Account
                         </h1>
                         <form
                             onSubmit={handleSubmit(submit)}
