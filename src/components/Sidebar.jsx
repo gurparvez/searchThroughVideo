@@ -25,9 +25,9 @@ const Sidebar = () => {
         {isLoading && <FullPage />}
         <aside
             id='logo-sidebar'
-            className='fixed left-0 top-10 z-0 w-52 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0 dark:bg-gray-900 dark:border-gray-700'
+            className='fixed left-0 top-10 z-0 w-52 h-screen pt-20 transition-transform -translate-x-full bg-gray-300 border-r border-gray-200 md:translate-x-0 dark:bg-gray-900 dark:border-gray-700'
             aria-label='Sidebar'>
-            <div className='h-full px-3 pb-14 overflow-y-auto bg-white dark:bg-gray-900'>
+            <div className='h-full bg-gray-300 px-3 pb-14 overflow-y-auto dark:bg-gray-900'>
                 <ul className='h-full flex flex-col space-y-2 font-medium justify-between'>
                     <div>
                         <li>
