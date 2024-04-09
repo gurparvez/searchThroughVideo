@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Input, Logo, ShowError, Spinner } from '../components';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import auth from '../api/auth';
 import { login } from '../store/authSlice';
 
@@ -11,6 +12,7 @@ const Register = () => {
     const [error, setError] = useState(false);
     const [msg, setMsg] = useState('');
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const submit = async (data) => {
         setIsLoading(true);
@@ -26,22 +28,28 @@ const Register = () => {
                         password: data.password,
                     })
                         .then((user) => {
-                            console.log("user: ");
+                            console.log('user: ');
                             console.log(user);
-                            setIsLoading(false);
                             dispatch(login(user));
                             navigate('/');
                         })
                         .catch((err) => {
-                            console.log("err: ");
+                            console.log('err: ');
                             console.log(err);
-                            // setIsLoading(false);
                             navigate('/login');
                         });
                 })
                 .catch((err) => {
                     setError(true);
-                    setMsg(err.message);
+                    const error = err.response?.data?.detail;
+                    if (typeof error === 'string') {
+                        setMsg(error);
+                    } else {
+                        setMsg('Internal Server error !');
+                    }
+                    setIsLoading(false);
+                })
+                .finally(() => {
                     setIsLoading(false);
                 });
         } catch (error) {

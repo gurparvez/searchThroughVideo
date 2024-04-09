@@ -37,7 +37,7 @@ class Auth {
 				url: "/api/user/token",
 				data: new URLSearchParams({ username, password }),
 			});
-			localStorage.setItem("token", req.data?.token);
+			localStorage.setItem("token", req.data?.access_token);
 			return req.data;
 		} catch (error) {
 			throw error;

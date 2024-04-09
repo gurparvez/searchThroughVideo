@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import auth from '../api/auth';
 import { login } from '../store/authSlice';
+import { useDispatch } from 'react-redux';
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
@@ -11,6 +12,7 @@ const Login = () => {
     const [error, setError] = useState(false);
     const [msg, setMsg] = useState('');
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const submit = async (data) => {
         setError(false);
@@ -20,16 +22,19 @@ const Login = () => {
         try {
             const res = await auth.login(data);
             if (res) {
-                dispatch(login(user));
+                console.log(res);
+                setIsLoading(false);
                 navigate('/');
             } else {
                 setError(true);
-                setMsg(res.message);
+                setMsg(res.detail);
+                setIsLoading(false);
             }
         } catch (error) {
             setError(true);
             setMsg(error);
-            console.log('Error :: register user ::', error);
+            console.log('Error :: login user ::', error);
+            setIsLoading(false);
         }
     };
 
@@ -42,7 +47,7 @@ const Login = () => {
                 <div className='w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700'>
                     <div className='p-6 space-y-4 md:space-y-6 sm:p-8'>
                         <h1 className='text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white'>
-                            Create and account
+                            Login
                         </h1>
                         <form
                             onSubmit={handleSubmit(submit)}
@@ -66,7 +71,7 @@ const Login = () => {
                             />
                             {error && <ShowError error={msg} />}
                             <Button
-                                data='Create Account'
+                                data='Login'
                                 type='submit'
                                 bg={isLoading ? 'bg-blue-900' : 'bg-blue-700'}
                                 bgDark={
