@@ -10,6 +10,7 @@ import ShowError from './ShowError.jsx';
 import Container from './Container.jsx';
 import FullPage from './Loaders/FullPage.jsx';
 import Sidebar from './Sidebar.jsx';
+import List from './Lists/List.jsx';
 
 export {
     ToggleTheme,
@@ -24,4 +25,5 @@ export {
     Container,
     FullPage,
     Sidebar,
+    List,
 };

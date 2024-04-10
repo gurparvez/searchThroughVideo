@@ -22,6 +22,7 @@ function App() {
                         setIsLoading(false);
                     })
                     .catch((error) => {
+                        console.log(error);
                         navigate('/login');
                     });
             } catch (error) {
@@ -38,7 +39,7 @@ function App() {
             {isLoading ? (
                 <FullPage />
             ) : (
-                <div className='fixed top-20 sm:top-24 left-0 md:left-52'>
+                <div className='fixed right-0 top-20 sm:top-24 left-0 md:left-52'>
                     <Outlet />
                 </div>
             )}
