@@ -3,8 +3,6 @@ import { Button, Input, Logo, ShowError, Spinner } from '../components';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import auth from '../api/auth';
-import { login } from '../store/authSlice';
-import { useDispatch } from 'react-redux';
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
@@ -12,7 +10,6 @@ const Login = () => {
     const [error, setError] = useState(false);
     const [msg, setMsg] = useState('');
     const navigate = useNavigate();
-    const dispatch = useDispatch();
 
     const submit = async (data) => {
         setError(false);

@@ -1,9 +1,6 @@
-// Loading.js
 import React from 'react';
 
-const FullPage = ({
-    zIndex="z-10"
-}) => {
+const FullPage = ({ zIndex = 'z-10' }) => {
     return (
         <div className={`fixed ${zIndex} w-screen h-screen bg-[#00000066]`}>
             <div className='flex space-x-2 justify-center items-center  w-full h-full'>
