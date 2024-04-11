@@ -15,11 +15,9 @@ const Login = () => {
         setError(false);
         setMsg('');
         setIsLoading(true);
-        console.log(data);
         try {
             const res = await auth.login(data);
             if (res) {
-                console.log(res);
                 setIsLoading(false);
                 navigate('/');
             } else {

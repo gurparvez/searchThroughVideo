@@ -34,6 +34,7 @@ function App() {
     return (
         <>
             <Header classname='bg-gray-300 p-7 dark:bg-gray-900 shadow-2xl text-lg' />
+            {/*TODO: Add a hamburger icon to sidebar in mobile view*/}
             <Sidebar />
 
             {isLoading ? (
