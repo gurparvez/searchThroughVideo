@@ -11,6 +11,10 @@ import Container from './Containers/Container.jsx';
 import FullPage from './Loaders/FullPage.jsx';
 import Sidebar from './Sidebar.jsx';
 import List from './Lists/List.jsx';
+import VideoItem from './Lists/VideoItem.jsx';
+import UploadFile from './Inputs/UploadFile.jsx';
+import TextAria from './Inputs/TextAria.jsx';
+import ShowImage from './ShowFiles/ShowImage.jsx';
 
 export {
     ToggleTheme,
@@ -26,4 +30,8 @@ export {
     FullPage,
     Sidebar,
     List,
+    VideoItem,
+    UploadFile,
+    TextAria,
+    ShowImage,
 };

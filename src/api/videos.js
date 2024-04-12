@@ -5,7 +5,6 @@ class Videos {
     constructor() {
         this.instance = axios.create({
             baseURL: URL,
-            timeout: 1000,
         });
     }
 
@@ -78,7 +77,7 @@ class Videos {
         return resDb;
     }
 
-    //Featch video
+    //Fetch video
 
     async get(key) {
         try {
@@ -94,27 +93,27 @@ class Videos {
         }
     }
 
-    async delete(folder_path){
+    async delete(folder_path) {
         try {
             const req = await this.instance({
                 method: 'delete',
                 url: `/api/videos/delete-folder/${folder_path}`,
-                headers:this.createHeader()
+                headers: this.createHeader(),
             });
         } catch (error) {
-            throw error
+            throw error;
         }
     }
 
-    async getAll(){
+    async getAll() {
         try {
             const req = await this.instance({
-                method: 'psot',
+                method: 'post',
                 url: '/api/videos/get-all-video',
-                headers:this.createHeader()
+                headers: this.createHeader(),
             });
         } catch (error) {
-            throw error
+            throw error;
         }
     }
 }
