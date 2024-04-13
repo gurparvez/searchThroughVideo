@@ -40,7 +40,7 @@ function App() {
             {isLoading ? (
                 <FullPage />
             ) : (
-                <div className='fixed right-0 top-20 sm:top-24 left-0 md:left-52'>
+                <div className='fixed right-0 bottom-0 overflow-auto top-20 sm:top-24 left-0 md:left-52'>
                     <Outlet />
                 </div>
             )}
