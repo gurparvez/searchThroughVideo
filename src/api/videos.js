@@ -112,6 +112,7 @@ class Videos {
                 url: '/api/videos/get-all-video',
                 headers: this.createHeader(),
             });
+            return req.data;
         } catch (error) {
             throw error;
         }
