@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import ButtonRed from './Buttons/ButtonRed';
 import auth from '../api/auth';
 import FullPage from './Loaders/FullPage';
@@ -25,35 +25,35 @@ const Sidebar = () => {
             {isLoading && <FullPage />}
             <aside
                 id='logo-sidebar'
-                className='fixed left-0 top-10 z-0 w-52 h-screen pt-20 transition-transform -translate-x-full bg-gray-300 border-r border-gray-200 md:translate-x-0 dark:bg-gray-900 dark:border-gray-700'
+                className='fixed left-0 top-24 bottom-0 z-0 w-52 pt-5 transition-transform -translate-x-full bg-gray-300 border-r border-gray-200 md:translate-x-0 dark:bg-gray-900 dark:border-gray-700'
                 aria-label='Sidebar'>
-                <div className='h-full bg-gray-300 px-3 pb-14 overflow-y-auto dark:bg-gray-900'>
+                <div className='h-full bg-gray-300 px-3 pb-5 overflow-y-auto dark:bg-gray-900'>
                     <ul className='h-full flex flex-col space-y-2 font-medium justify-between'>
                         <div>
                             <li>
-                                <a
-                                    href='#'
+                                <NavLink
+                                    to='/'
                                     className='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group'>
                                     <span className='ms-3'>Dashboard</span>
-                                </a>
+                                </NavLink>
                             </li>
                             <li>
-                                <a
-                                    href='#'
+                                <NavLink
+                                    to='recent'
                                     className='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group'>
                                     <span className='flex-1 ms-3 whitespace-nowrap'>
                                         Recently Uploaded
                                     </span>
-                                </a>
+                                </NavLink>
                             </li>
                             <li>
-                                <a
-                                    href='#'
+                                <NavLink
+                                    to='inProgress'
                                     className='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group'>
                                     <span className='flex-1 ms-3 whitespace-nowrap'>
                                         In Progress
                                     </span>
-                                </a>
+                                </NavLink>
                             </li>
                         </div>
                         <div>

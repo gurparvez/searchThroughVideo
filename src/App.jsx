@@ -19,11 +19,13 @@ function App() {
                 auth.getUser()
                     .then((user) => {
                         dispatch(login(user));
-                        setIsLoading(false);
                     })
                     .catch((error) => {
                         console.log(error);
                         navigate('/login');
+                    })
+                    .finally(() => {
+                        setIsLoading(false);
                     });
             } catch (error) {
                 console.log('Error :: get user ::', error);

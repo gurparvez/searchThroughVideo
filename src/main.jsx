@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App.jsx';
 import './index.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Home, ContactUs, Login, Register, UploadVideo } from './layouts';
+import { Home, ContactUs, Login, Register, UploadVideo, Recent, InProgress } from './layouts';
 import { Provider } from 'react-redux';
 import store from './store/store.js';
 
@@ -15,6 +15,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                     <Route index element={<Home />} />
                     <Route path='contact' element={<ContactUs />} />
                     <Route path='upload' element={<UploadVideo />} />
+                    <Route path='recent' element={<Recent />} />
+                    <Route path='inProgress' element={<InProgress />} />
                 </Route>
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
