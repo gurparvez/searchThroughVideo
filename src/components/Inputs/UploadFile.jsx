@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
+// TODO: Add an 'accept=[image/png, etc]' prop
 const UploadFile = ({ onFileUpload, classname = 'w-full' }) => {
     const handleFileChange = (event) => {
         const uploadedFile = event.target.files[0];
@@ -31,12 +32,13 @@ const UploadFile = ({ onFileUpload, classname = 'w-full' }) => {
                         or drag and drop
                     </p>
                     <p className='text-xs text-gray-500 dark:text-gray-400'>
-                        mp4,webm, mov,mpeg,avi,flv,mkv
+                        mp4, webm, mov, mpeg, avi, flv, mkv
                     </p>
                 </div>
                 <input
                     id='dropzone-file'
                     type='file'
+                    accept='video/mp4, video/webm, video/quicktime, video/mpeg, video/x-msvideo, video/x-flv, video/x-matroska'
                     onChange={handleFileChange}
                     className='hidden'
                 />

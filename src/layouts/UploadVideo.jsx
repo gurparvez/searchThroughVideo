@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Button,
     ButtonRed,
@@ -8,6 +8,7 @@ import {
     UploadFile,
 } from '../components/index.js';
 import { useNavigate } from 'react-router-dom';
+import video from '../api/videos.js';
 
 const UploadVideo = () => {
     const [uploadedFile, setUploadedFile] = useState(null);
@@ -38,25 +39,27 @@ const UploadVideo = () => {
         generateThumbnail(file);
     };
 
-    function generateThumbnail(file) {
-        return new Promise((resolve) => {
+    function generateThumbnail(videoFile) {
+        const video = document.createElement('video');
+        video.preload = 'metadata';
+        video.src = URL.createObjectURL(videoFile);
+
+        video.onloadedmetadata = () => {
+            // Set the height and width of the canvas
             const canvas = document.createElement('canvas');
-            const video = document.createElement('video');
+            const aspectRatio = video.videoWidth / video.videoHeight;
+            const width = 150; // Set the desired width of the thumbnail
+            canvas.width = width;
+            canvas.height = width / aspectRatio;
 
-            video.muted = true; // Mute the video to avoid sound
-            video.src = URL.createObjectURL(file);
+            const ctx = canvas.getContext('2d');
+            // Draw the video frame onto the canvas
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-            video.onloadeddata = () => {
-                const ctx = canvas.getContext('2d');
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                ctx.drawImage(video, 0, 0);
-
-                const thumbnailURL = canvas.toDataURL('image/jpeg'); // You can adjust the format here (e.g., "image/png")
-                URL.revokeObjectURL(video.src); // Revoke the temporary object URL
-                resolve(thumbnailURL);
-            };
-        });
+            // Convert canvas to base64 image
+            const thumbnailDataUrl = canvas.toDataURL('image/jpeg');
+            setThumbnail(thumbnailDataUrl);
+        };
     }
 
     const handleSubmit = () => {
@@ -73,6 +76,20 @@ const UploadVideo = () => {
             console.log(`Upload progress: ${percentage}%`);
         };
         console.log(data);
+
+        try {
+            video
+                .upload(data)
+                .then((res) => {
+                    console.log('res: ', res);
+                })
+                .catch((err) => {
+                    console.log('error: ', err);
+                });
+        } catch (error) {
+            console.log('Error :: upload video :: ', error);
+        }
+        
     };
 
     return (
@@ -101,7 +118,7 @@ const UploadVideo = () => {
                     <TextAria
                         label='Description'
                         value={description}
-                        onChange={(e) => setDescription(e.target.value)}
+                        onchange={(e) => setDescription(e.target.value)}
                     />
                 </div>
             </div>
