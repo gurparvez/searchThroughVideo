@@ -16,18 +16,16 @@ const Login = () => {
         setMsg('');
         setIsLoading(true);
         try {
-            const res = await auth.login(data);
-            if (res) {
-                setIsLoading(false);
+            auth.login(data).then((res) => {
                 navigate('/');
-            } else {
+            }).catch((err) => {
                 setError(true);
-                setMsg(res.detail);
+                setMsg(err.response?.data?.detail);
+            }).finally(() => {
                 setIsLoading(false);
-            }
+            })
         } catch (error) {
             setError(true);
-            setMsg(error);
             console.log('Error :: login user ::', error);
             setIsLoading(false);
         }
