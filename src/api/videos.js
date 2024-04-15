@@ -117,6 +117,19 @@ class Videos {
             throw error;
         }
     }
+
+    async getInProcess() {
+        try {
+            const req = await this.instance({
+                method: 'post',
+                url: '/api/videos/in-process',
+                headers: this.createHeader(),
+            });
+            return req.data;
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 const video = new Videos();

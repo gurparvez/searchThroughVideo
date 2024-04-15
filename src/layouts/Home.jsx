@@ -1,4 +1,4 @@
-import { Button, FullPage, List, VideoItem } from '../components/index.js';
+import { Button, Container, FullPage, List, VideoItem } from '../components/index.js';
 import React, { useEffect, useState } from 'react';
 import SearchBar from '../components/SearchBars/SearchBar.jsx';
 import videos from '../api/videos.js';
@@ -55,8 +55,7 @@ const Home = () => {
     );
 
     return (
-        // TODO: Wrap in <Container></Container>
-        <div className='w-full sm:p-10 py-10 px-4 *:my-5'>
+        <Container>
             <SearchBar onSearch={handleSearch} />
             <NavLink to={'upload'}>
                 <Button data='Upload New' classname='w-full sm:w-48' />
@@ -86,7 +85,7 @@ const Home = () => {
                     </VideoItem>
                 ))}
             </List>
-        </div>
+        </Container>
     );
 };
 

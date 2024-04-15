@@ -15,6 +15,7 @@ import VideoItem from './Lists/VideoItem.jsx';
 import UploadFile from './Inputs/UploadFile.jsx';
 import TextAria from './Inputs/TextAria.jsx';
 import ShowImage from './ShowFiles/ShowImage.jsx';
+import ProgressBar from './ProgressBar.jsx';
 
 export {
     ToggleTheme,
@@ -34,4 +35,5 @@ export {
     UploadFile,
     TextAria,
     ShowImage,
+    ProgressBar,
 };
