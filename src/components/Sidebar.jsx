@@ -3,16 +3,20 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import ButtonRed from './Buttons/ButtonRed';
 import auth from '../api/auth';
 import FullPage from './Loaders/FullPage';
+import { useDispatch } from 'react-redux';
+import { logout } from '../store/authSlice.js';
 
 const Sidebar = () => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const logoutHandler = () => {
         setIsLoading(true);
 
         auth.logout()
             .then(() => {
+                dispatch(logout());
                 navigate('/login');
             })
             .finally(() => {
@@ -34,7 +38,7 @@ const Sidebar = () => {
                                 <NavLink
                                     to='/'
                                     className='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group'>
-                                    <span className='ms-3'>Dashboard</span>
+                                    <span className='ms-3'>My Videos</span>
                                 </NavLink>
                             </li>
                             <li>

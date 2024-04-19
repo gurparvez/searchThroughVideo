@@ -4,7 +4,7 @@ import {
     ButtonRed,
     Container,
     Input,
-    List,
+    VideosList,
     ShowImage,
     TextAria,
     UploadFile,
@@ -112,14 +112,14 @@ const UploadVideo = () => {
         <Container classname='flex flex-col'>
             <h1>Upload Video</h1>
             {isProcessing ? (
-                <List>
+                <VideosList>
                     <VideoItem
                         inProcessing={true}
                         progress={uploadProgress}
                         classname='w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600'>
                         {title}
                     </VideoItem>
-                </List>
+                </VideosList>
             ) : (
                 <>
                     <div className='w-full flex flex-col sm:flex-row'>

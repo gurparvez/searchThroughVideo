@@ -1,4 +1,4 @@
-import { Button, Container, FullPage, List, VideoItem } from '../components/index.js';
+import { Button, Container, VideosList } from '../components/index.js';
 import React, { useEffect, useState } from 'react';
 import SearchBar from '../components/SearchBars/SearchBar.jsx';
 import videos from '../api/videos.js';
@@ -11,6 +11,7 @@ const Home = () => {
     const [loading, setLoading] = useState(false);
     const [msg, setMsg] = useState(null);
     const [videoData, setVideoData] = useState(null);
+    const [selectedVideos, setSelectedVideos] = useState([]);
     const dispatch = useDispatch();
 
     const data = useSelector((state) => state.videos.videoData);
@@ -65,26 +66,13 @@ const Home = () => {
                     <p>{msg}</p>
                 </div>
             )}
-            <List>
-                {loading && (
-                    <div>
-                        <FullPage
-                            zIndex='z-0'
-                            top='top-80'
-                            left='left-4 sm:left-10 md:left-[15.5rem]'
-                            right='right-4 sm:right-10'
-                            bottom='bottom-10'
-                        />
-                    </div>
-                )}
-                {filteredVideos?.map((video) => (
-                    <VideoItem
-                        key={video?.id}
-                        classname='w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600'>
-                        {video?.title}
-                    </VideoItem>
-                ))}
-            </List>
+            <h3>My Videos</h3>
+            <VideosList
+                videos={filteredVideos}
+                loading={loading}
+                selectedVideos={selectedVideos}
+                setSelectedVideos={setSelectedVideos}
+            />
         </Container>
     );
 };

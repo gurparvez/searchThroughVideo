@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import video from '../api/videos';
-import { Container, FullPage, List, ShowError, VideoItem } from '../components';
+import { Container, FullPage, VideosList, ShowError } from '../components';
 
 const InProgress = () => {
     const [loading, setLoading] = useState(false);
@@ -49,21 +49,16 @@ const InProgress = () => {
                 </div>
             )}
 
-            <List>
-                {data?.length === 0 ? (
-                    <div>
-                        <ShowError error='All files are Processed !' classname='text-green-500 p-4' />
-                    </div>
-                ) : (
-                    data?.map((video) => (
-                        <VideoItem
-                            key={video?.id}
-                            classname='w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600'>
-                            {video?.title}
-                        </VideoItem>
-                    ))
-                )}
-            </List>
+            {data?.length === 0 ? (
+                <div>
+                    <ShowError
+                        error='All files are Processed !'
+                        classname='text-green-500 p-4'
+                    />
+                </div>
+            ) : (
+                <VideosList videos={data} />
+            )}
         </Container>
     );
 };
