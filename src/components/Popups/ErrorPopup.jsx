@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ErrorPopup = ({ error = 'There was an error!' }) => {
+const ErrorPopup = ({ error = 'There was an error! Try reloading...' }) => {
     return (
         <div
             id='toast-danger'

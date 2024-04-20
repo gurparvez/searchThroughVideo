@@ -38,7 +38,7 @@ const Home = () => {
                 })
                 .catch((err) => {
                     console.log(err);
-                    setMsg(err);
+                    setMsg(err.response?.data?.detail);
                 })
                 .finally(() => {
                     setLoading(false);

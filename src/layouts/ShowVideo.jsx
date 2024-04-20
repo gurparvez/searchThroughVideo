@@ -45,7 +45,7 @@ const ShowVideo = () => {
                         />
                     </div>
                 ) : (
-                    <div className='*:my-2'>
+                    <div className='w-full *:my-2'>
                         <Video
                             src={videoDetails?.url}
                             subsSrc={videoDetails?.subtitle[0]}
@@ -59,4 +59,5 @@ const ShowVideo = () => {
         </Container>
     );
 };
+
 export default ShowVideo;
