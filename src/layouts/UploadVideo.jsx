@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Button,
     ButtonRed,
@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import video from '../api/videos.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { put } from '../store/videoSlice.js';
+import { data } from 'autoprefixer';
 
 const UploadVideo = () => {
     const [uploadedFile, setUploadedFile] = useState(null);
@@ -71,6 +72,10 @@ const UploadVideo = () => {
         };
     }
 
+    useEffect(() => {
+        console.log(title);
+    }, [title]);
+
     const handleSubmit = () => {
         const data = {
             title,
@@ -84,6 +89,7 @@ const UploadVideo = () => {
             );
             setUploadProgress(percentage);
         };
+        console.log(data);
 
         try {
             setIsProcessing(true);
@@ -114,6 +120,7 @@ const UploadVideo = () => {
             {isProcessing ? (
                 <VideosList>
                     <VideoItem
+                        video={data}
                         inProcessing={true}
                         progress={uploadProgress}
                         classname='w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600'>

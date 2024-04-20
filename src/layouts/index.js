@@ -5,5 +5,15 @@ import Register from './Register';
 import UploadVideo from './UploadVideo.jsx';
 import Recent from './Recent.jsx';
 import InProgress from './InProgress.jsx';
+import ShowVideo from './ShowVideo.jsx';
 
-export { Home, Login, ContactUs, Register, UploadVideo, Recent, InProgress };
+export {
+    Home,
+    Login,
+    ContactUs,
+    Register,
+    UploadVideo,
+    Recent,
+    InProgress,
+    ShowVideo,
+};

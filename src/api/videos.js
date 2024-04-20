@@ -80,6 +80,7 @@ class Videos {
     //Fetch video
 
     async get(key) {
+        console.log(key);
         try {
             const req = await this.instance({
                 method: 'post',
