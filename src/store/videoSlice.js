@@ -12,9 +12,16 @@ const videoSlice = createSlice({
             state.status = true;
             state.videoData = action.payload;
         },
+        deleteVideo: (state, action) => {
+            const newVideos = state.videoData.filter(
+                (video) => video.key !== action.payload,
+            );
+            console.log(newVideos);
+            state.videoData = newVideos;
+        },
     },
 });
 
-export const { put } = videoSlice.actions;
+export const { put, deleteVideo } = videoSlice.actions;
 
 export default videoSlice.reducer;

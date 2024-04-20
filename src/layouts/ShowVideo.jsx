@@ -4,6 +4,7 @@ import SearchBar from '../components/SearchBars/SearchBar.jsx';
 import { Container, Spinner } from '../components/index.js';
 import Video from '../components/Video.jsx';
 import video from '../api/videos.js';
+import ErrorPopup from '../components/Popups/ErrorPopup.jsx';
 
 const ShowVideo = () => {
     const { videoKey, ...remainingPath } = useParams();
@@ -31,14 +32,10 @@ const ShowVideo = () => {
         getUrlFromId();
     }, []);
 
-    const videoSrc =
-        '../../public/Big projects are ditching TypeScript… why_.mp4';
-    const SubsSrc =
-        '../../public/[Views4You - English (auto-generated)] Big projects are ditching TypeScript… why_.srt';
-
     return (
         <Container>
             <div className='w-full flex flex-col sm:flex-row *:p-4'>
+                {msg && <ErrorPopup error={msg} />}
                 {loading ? (
                     <div className='w-full relative flex justify-center items-center h-80 bg-gray-900'>
                         <Spinner
@@ -48,7 +45,14 @@ const ShowVideo = () => {
                         />
                     </div>
                 ) : (
-                    <Video src={videoDetails?.url} subsSrc={SubsSrc} />
+                    <div className='*:my-2'>
+                        <Video
+                            src={videoDetails?.url}
+                            subsSrc={videoDetails?.subtitle[0]}
+                        />
+                        <h3>{videoDetails?.title}</h3>
+                        <p>{videoDetails?.description}</p>
+                    </div>
                 )}
                 <SearchBar />
             </div>

@@ -106,6 +106,18 @@ class Videos {
         }
     }
 
+    async deleteFromKey(key) {
+        try {
+            const req = await this.instance({
+                method: 'post',
+                url: `/api/videos/delete/${key}`,
+                headers: this.createHeader(),
+            });
+        } catch (error) {
+            throw error;
+        }
+    }
+
     async getAll() {
         try {
             const req = await this.instance({

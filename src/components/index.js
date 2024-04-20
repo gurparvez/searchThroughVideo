@@ -17,6 +17,7 @@ import TextAria from './Inputs/TextAria.jsx';
 import ShowImage from './ShowFiles/ShowImage.jsx';
 import ProgressBar from './ProgressBar.jsx';
 import CheckBox from './Checkboxes/CheckBox.jsx';
+import SuccessPopup from './Popups/SuccessPopup.jsx';
 
 export {
     ToggleTheme,
@@ -38,4 +39,5 @@ export {
     ShowImage,
     ProgressBar,
     CheckBox,
+    SuccessPopup,
 };

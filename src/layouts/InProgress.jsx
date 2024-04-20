@@ -53,7 +53,7 @@ const InProgress = () => {
                 <div>
                     <ShowError
                         error='All files are Processed !'
-                        classname='text-green-500 p-4'
+                        classname='text-green-500 text-xl p-4'
                     />
                 </div>
             ) : (

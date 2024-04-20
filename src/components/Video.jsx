@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Video = ({ src, subsSrc }) => {
     return (
-        <div className='w-full'>
-            <video src={src} controls={true}>
+        <div className='w-full h-96'>
+            <video src={src} controls={true} className='w-full h-full'>
                 <track
                     label='English'
                     kind='subtitles'
