@@ -3,7 +3,11 @@ import React from 'react';
 const Video = ({ src, subsSrc }) => {
     return (
         <div className='w-full h-96'>
-            <video src={src} controls={true} className='w-full h-full'>
+            <video
+                src={src}
+                controls={true}
+                className='w-full h-full'
+                crossOrigin=''>
                 <track
                     label='English'
                     kind='subtitles'

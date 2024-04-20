@@ -48,7 +48,7 @@ const ShowVideo = () => {
                     <div className='w-full *:my-2'>
                         <Video
                             src={videoDetails?.url}
-                            subsSrc={videoDetails?.subtitle[0]}
+                            subsSrc={videoDetails?.subtitle[1]}
                         />
                         <h3>{videoDetails?.title}</h3>
                         <p>{videoDetails?.description}</p>

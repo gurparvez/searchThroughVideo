@@ -1,5 +1,6 @@
 import React from 'react';
 
+// TODO: Close the popup
 const ErrorPopup = ({ error = 'There was an error! Try reloading...' }) => {
     return (
         <div
