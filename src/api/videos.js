@@ -80,11 +80,24 @@ class Videos {
     //Fetch video
 
     async get(key) {
-        console.log(key);
         try {
             const req = await this.instance({
                 method: 'post',
                 url: `/api/videos/get-video-url/${key}`,
+                headers: this.createHeader(),
+            });
+
+            return req.data;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async getTranscripts(url) {
+        try {
+            const req = await this.instance({
+                method: 'get',
+                url: `${url}`,
                 headers: this.createHeader(),
             });
 

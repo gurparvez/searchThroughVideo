@@ -9,7 +9,7 @@ const FullPage = ({
 }) => {
     return (
         <div
-            className={`fixed ${zIndex} ${top} ${left} ${right} ${bottom} bg-[#00000066]`}>
+            className={`absolute ${zIndex} ${top} ${left} ${right} ${bottom} bg-[#00000066]`}>
             <div className='flex space-x-2 justify-center items-center w-full h-full'>
                 <span className='sr-only'>Loading...</span>
                 <div className='h-8 w-8 bg-gray-600 dark:bg-gray-400 rounded-full animate-bounce [animation-delay:-0.3s]'></div>

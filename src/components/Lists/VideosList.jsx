@@ -19,18 +19,8 @@ const VideosList = ({
     };
 
     return (
-        <ul className='w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white'>
-            {loading && (
-                <div>
-                    <FullPage
-                        zIndex='z-0'
-                        top='top-96'
-                        left='left-4 sm:left-10 md:left-[15.5rem]'
-                        right='right-4 sm:right-10'
-                        bottom='bottom-10'
-                    />
-                </div>
-            )}
+        <ul className='w-full relative text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white'>
+            {loading && <FullPage />}
             {videos?.map((video) => (
                 <VideoItem
                     key={video?.id}

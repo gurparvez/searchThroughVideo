@@ -8,12 +8,14 @@ const Video = ({ src, subsSrc }) => {
                 controls={true}
                 className='w-full h-full'
                 crossOrigin=''>
-                <track
-                    label='English'
-                    kind='subtitles'
-                    srcLang='en'
-                    src={subsSrc}
-                />
+                {subsSrc && (
+                    <track
+                        label='English'
+                        kind='subtitles'
+                        srcLang='en'
+                        src={subsSrc}
+                    />
+                )}
             </video>
         </div>
     );
