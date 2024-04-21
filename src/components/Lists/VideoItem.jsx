@@ -15,7 +15,7 @@ const VideoItem = ({
     const [isHovered, setIsHovered] = useState(false);
 
     const handleCheckBoxChange = () => {
-        onSelect(video?.key);
+        onSelect(video?.path);
     };
 
     return (

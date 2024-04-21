@@ -8,11 +8,13 @@ const VideosList = ({
     selectedVideos = [],
     setSelectedVideos,
 }) => {
-    const handleSelect = (videoKey) => {
-        if (selectedVideos.includes(videoKey)) {
-            setSelectedVideos(selectedVideos.filter((key) => key !== videoKey));
+    const handleSelect = (videoPath) => {
+        if (selectedVideos.includes(videoPath)) {
+            setSelectedVideos(
+                selectedVideos.filter((path) => path !== videoPath),
+            );
         } else {
-            setSelectedVideos([...selectedVideos, videoKey]);
+            setSelectedVideos([...selectedVideos, videoPath]);
         }
     };
 
@@ -34,7 +36,7 @@ const VideosList = ({
                     key={video?.id}
                     video={video}
                     onSelect={handleSelect}
-                    isSelected={selectedVideos.includes(video?.key)}
+                    isSelected={selectedVideos.includes(video?.path)}
                 />
             ))}
             {children}

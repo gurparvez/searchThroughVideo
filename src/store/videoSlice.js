@@ -14,8 +14,9 @@ const videoSlice = createSlice({
         },
         deleteVideo: (state, action) => {
             const newVideos = state.videoData.filter(
-                (video) => video.key !== action.payload,
+                (video) => video.path !== action.payload,
             );
+            if (newVideos.length === 0) this.state.status = null;
             console.log(newVideos);
             state.videoData = newVideos;
         },

@@ -9,7 +9,7 @@ import SearchBar from '../components/SearchBars/SearchBar.jsx';
 import videos from '../api/videos.js';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { put } from '../store/videoSlice.js';
+import { deleteVideo, put } from '../store/videoSlice.js';
 import video from '../api/videos.js';
 
 const Home = () => {
@@ -65,13 +65,14 @@ const Home = () => {
     const deleteVideos = () => {
         try {
             setError(false);
-            selectedVideos.map((videoKey) => {
+            selectedVideos.map((videoPath) => {
                 setLoading(true);
+                console.log(videoPath);
                 video
-                    .deleteFromKey(videoKey)
+                    .delete(videoPath)
                     .then((res) => {
                         console.log(res);
-                        deleteVideos(videoKey);
+                        dispatch(deleteVideo(videoPath));
                     })
                     .catch((err) => {
                         console.log(err);
