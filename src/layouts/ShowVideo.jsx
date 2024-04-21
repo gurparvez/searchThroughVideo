@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import SearchBar from '../components/SearchBars/SearchBar.jsx';
-import { Container, FullPage, Spinner } from '../components/index.js';
+import { Container, FullPage, ShowError, Spinner } from '../components/index.js';
 import Video from '../components/Video.jsx';
 import video from '../api/videos.js';
 import ErrorPopup from '../components/Popups/ErrorPopup.jsx';
@@ -14,6 +14,7 @@ const ShowVideo = () => {
     const [transcriptLoading, setTranscriptLoading] = useState(true);
     const [videoDetails, setVideoDetails] = useState(null);
     const [msg, setMsg] = useState(null);
+    const [transcriptError, setTranscriptError] = useState(null);
 
     const getUrlFromId = () => {
         video
@@ -30,12 +31,29 @@ const ShowVideo = () => {
     };
 
     const getTranscriptData = () => {
+        setTranscriptError(null);
         setTranscriptLoading(true);
-        video.getTranscripts(videoDetails?.transcript).then().catch()
-    }
+        try {
+            video
+                .getTranscripts(videoDetails?.transcript)
+                .then((res) => {
+                    console.log(res);
+                })
+                .catch((err) => {
+                    console.log(err);
+                    setTranscriptError("Error while getting transcripts !!!");
+                })
+                .finally(() => {
+                    setTranscriptLoading(false);
+                });
+        } catch (error) {
+            console.log('Error :: getTranscriptData :: ', error);
+        }
+    };
 
     useEffect(() => {
         getUrlFromId();
+        getTranscriptData();
     }, []);
 
     return (
@@ -66,9 +84,10 @@ const ShowVideo = () => {
                         </div>
                     )}
                 </div>
-                <div className='w-full relative'>
+                <div className='w-full relative *:my-5'>
                     <SearchBar />
                     {transcriptLoading && <FullPage left='left-0 top-0' />}
+                    {transcriptError && <ShowError error={transcriptError} />}
                 </div>
             </div>
         </Container>

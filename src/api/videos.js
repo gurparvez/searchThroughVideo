@@ -94,6 +94,7 @@ class Videos {
     }
 
     async getTranscripts(url) {
+        console.log(url);
         try {
             const req = await this.instance({
                 method: 'get',
