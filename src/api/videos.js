@@ -96,10 +96,9 @@ class Videos {
     async getTranscripts(url) {
         console.log(url);
         try {
-            const req = await this.instance({
+            const req = await axios({
                 method: 'get',
                 url: `${url}`,
-                headers: this.createHeader(),
             });
 
             return req.data;

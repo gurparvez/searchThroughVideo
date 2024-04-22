@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import SearchBar from '../components/SearchBars/SearchBar.jsx';
-import { Container, FullPage, ShowError, Spinner } from '../components/index.js';
+import {
+    Container,
+    FullPage,
+    ShowError,
+    Spinner,
+} from '../components/index.js';
 import Video from '../components/Video.jsx';
 import video from '../api/videos.js';
 import ErrorPopup from '../components/Popups/ErrorPopup.jsx';
+import Search from '../Search.js';
 
 const ShowVideo = () => {
     const { videoKey, ...remainingPath } = useParams();
@@ -15,6 +21,9 @@ const ShowVideo = () => {
     const [videoDetails, setVideoDetails] = useState(null);
     const [msg, setMsg] = useState(null);
     const [transcriptError, setTranscriptError] = useState(null);
+    const [searchQuery, setSearchQuery] = useState(null);
+    const [searchResult, setSearchResult] = useState(null);
+    const [search, setSearch] = useState(null);
 
     const getUrlFromId = () => {
         video
@@ -37,11 +46,11 @@ const ShowVideo = () => {
             video
                 .getTranscripts(videoDetails?.transcript)
                 .then((res) => {
-                    console.log(res);
+                    setSearch(new Search(res))
                 })
                 .catch((err) => {
                     console.log(err);
-                    setTranscriptError("Error while getting transcripts !!!");
+                    setTranscriptError('Error while getting transcripts !!!');
                 })
                 .finally(() => {
                     setTranscriptLoading(false);
@@ -53,8 +62,28 @@ const ShowVideo = () => {
 
     useEffect(() => {
         getUrlFromId();
-        getTranscriptData();
     }, []);
+
+    useEffect(() => {
+        if (videoDetails) {
+            getTranscriptData();
+        }
+    }, [videoDetails]);
+
+    useEffect(() => {
+        if (search) {
+            console.log(searchQuery);
+            setSearchResult(search?.search(searchQuery));
+        }
+    }, [searchQuery]);
+
+    useEffect(() => {
+        console.log(search);
+    }, [search]);
+
+    useEffect(() => {
+        console.log(searchResult);
+    }, [searchResult]);
 
     return (
         <Container>
@@ -85,7 +114,7 @@ const ShowVideo = () => {
                     )}
                 </div>
                 <div className='w-full relative *:my-5'>
-                    <SearchBar />
+                    <SearchBar onSearch={setSearchQuery} />
                     {transcriptLoading && <FullPage left='left-0 top-0' />}
                     {transcriptError && <ShowError error={transcriptError} />}
                 </div>

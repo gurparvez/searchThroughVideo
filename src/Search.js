@@ -1,5 +1,6 @@
 class Search {
     constructor(data) {
+        console.log(data);
         this.transcript = data.results.transcripts[0].transcript;
         this.items = data.results.items;
         this.wordMappings = [];
@@ -88,7 +89,7 @@ class Search {
         return null; // If no mapping found for the given index
     }
 
-    async search(query) {
+    search(query) {
         const indexes = this.searchWord(query);
         const res = [];
         for (let index of indexes) {
@@ -103,16 +104,18 @@ class Search {
 }
 
 // Usage
-import fs from 'fs/promises';
+// import fs from 'fs/promises';
 
-async function main() {
-    try {
-        const data = await fs.readFile('./data.json', 'utf-8');
-        const s = new Search(JSON.parse(data));
-        console.log(await s.search('mac book'));
-    } catch (error) {
-        console.error('Error reading or parsing data:', error);
-    }
-}
+// async function main() {
+//     try {
+//         const data = await fs.readFile('./data.json', 'utf-8');
+//         const s = new Search(JSON.parse(data));
+//         console.log(await s.search('mac book'));
+//     } catch (error) {
+//         console.error('Error reading or parsing data:', error);
+//     }
+// }
 
-main();
+// main();
+
+export default Search;
