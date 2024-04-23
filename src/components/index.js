@@ -18,6 +18,8 @@ import ShowImage from './ShowFiles/ShowImage.jsx';
 import ProgressBar from './ProgressBar.jsx';
 import CheckBox from './Checkboxes/CheckBox.jsx';
 import SuccessPopup from './Popups/SuccessPopup.jsx';
+import TranscriptionList from './Lists/TranscriptionList.jsx';
+import TranscriptionItem from './Lists/TranscriptionItem.jsx';
 
 export {
     ToggleTheme,
@@ -40,4 +42,6 @@ export {
     ProgressBar,
     CheckBox,
     SuccessPopup,
+    TranscriptionItem,
+    TranscriptionList,
 };

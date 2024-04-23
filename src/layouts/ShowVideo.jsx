@@ -6,6 +6,7 @@ import {
     FullPage,
     ShowError,
     Spinner,
+    TranscriptionList,
 } from '../components/index.js';
 import Video from '../components/Video.jsx';
 import video from '../api/videos.js';
@@ -24,6 +25,7 @@ const ShowVideo = () => {
     const [searchQuery, setSearchQuery] = useState(null);
     const [searchResult, setSearchResult] = useState(null);
     const [search, setSearch] = useState(null);
+    const [selectedSearchResult, setSelectedSearchResult] = useState(null);
 
     const getUrlFromId = () => {
         video
@@ -117,6 +119,7 @@ const ShowVideo = () => {
                     <SearchBar onSearch={setSearchQuery} />
                     {transcriptLoading && <FullPage left='left-0 top-0' />}
                     {transcriptError && <ShowError error={transcriptError} />}
+                    {searchResult && <TranscriptionList transcripts={searchResult} />}
                 </div>
             </div>
         </Container>

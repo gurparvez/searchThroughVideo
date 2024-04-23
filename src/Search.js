@@ -1,6 +1,5 @@
 class Search {
     constructor(data) {
-        console.log(data);
         this.transcript = data.results.transcripts[0].transcript;
         this.items = data.results.items;
         this.wordMappings = [];
@@ -117,5 +116,18 @@ class Search {
 // }
 
 // main();
+
+// output:
+// [
+//   {
+//      endIndex: 145,
+//      startIndex: 136,
+//      time: [
+// 	        0: "6.9",
+// 	        1: "7.65",
+// 	    ],
+//      word: "initialize",
+//   },
+// ]
 
 export default Search;
