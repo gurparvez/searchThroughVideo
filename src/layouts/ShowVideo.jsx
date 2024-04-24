@@ -31,7 +31,6 @@ const ShowVideo = () => {
         video
             .get(fullKey)
             .then((res) => {
-                console.log(res);
                 setVideoDetails(res);
             })
             .catch((err) => {
@@ -74,18 +73,17 @@ const ShowVideo = () => {
 
     useEffect(() => {
         if (search) {
-            console.log(searchQuery);
             setSearchResult(search?.search(searchQuery));
         }
     }, [searchQuery]);
 
     useEffect(() => {
-        console.log(search);
-    }, [search]);
-
-    useEffect(() => {
         console.log(searchResult);
     }, [searchResult]);
+
+    useEffect(() => {
+        console.log(selectedSearchResult);
+    }, [selectedSearchResult]);
 
     return (
         <Container>
@@ -107,6 +105,7 @@ const ShowVideo = () => {
                                 <Video
                                     src={videoDetails?.url}
                                     subsSrc={videoDetails?.subtitle[1]}
+                                    currentTime={selectedSearchResult}
                                 />
                             ) : (
                                 <Video src={videoDetails?.url} />
@@ -119,7 +118,7 @@ const ShowVideo = () => {
                     <SearchBar onSearch={setSearchQuery} />
                     {transcriptLoading && <FullPage left='left-0 top-0' />}
                     {transcriptError && <ShowError error={transcriptError} />}
-                    {searchResult && <TranscriptionList transcripts={searchResult} />}
+                    {searchResult && <TranscriptionList transcripts={searchResult} onSelect={setSelectedSearchResult} />}
                 </div>
             </div>
         </Container>

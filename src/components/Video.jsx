@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
-const Video = ({ src, subsSrc }) => {
+const Video = ({ src, subsSrc, currentTime }) => {
+    const videoRef = useRef();
+    console.log(currentTime);
+
+    const handleCurrentTimeChange = () => {
+        if (videoRef.current) {
+            videoRef.current.currentTime = currentTime;
+        }
+    };
+
+    useEffect(() => {
+        handleCurrentTimeChange();
+    }, [currentTime]);
+
     return (
         <div className='w-full h-96'>
             <video
+                ref={videoRef}
                 src={src}
                 controls={true}
                 className='w-full h-full'

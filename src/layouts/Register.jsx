@@ -18,25 +18,25 @@ const Register = () => {
         setIsLoading(true);
         setError(false);
         setMsg('');
-        console.log(data);
 
         try {
             auth.register(data)
                 .then(() => {
+                    setIsLoading(true);
                     auth.login({
                         username: data.username,
                         password: data.password,
                     })
-                        .then((user) => {
-                            console.log('user: ');
-                            console.log(user);
-                            dispatch(login(user));
+                        .then(() => {
                             navigate('/');
                         })
                         .catch((err) => {
                             console.log('err: ');
                             console.log(err);
                             navigate('/login');
+                        })
+                        .finally(() => {
+                            setIsLoading(false);
                         });
                 })
                 .catch((err) => {

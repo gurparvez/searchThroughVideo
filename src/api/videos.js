@@ -94,7 +94,6 @@ class Videos {
     }
 
     async getTranscripts(url) {
-        console.log(url);
         try {
             const req = await axios({
                 method: 'get',
