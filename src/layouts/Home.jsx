@@ -49,6 +49,7 @@ const Home = () => {
     };
 
     useEffect(() => {
+        console.log(videoData);
         if (!videoData) {
             getVideos();
         }
