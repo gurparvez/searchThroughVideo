@@ -20,6 +20,7 @@ import CheckBox from './Checkboxes/CheckBox.jsx';
 import SuccessPopup from './Popups/SuccessPopup.jsx';
 import TranscriptionList from './Lists/TranscriptionList.jsx';
 import TranscriptionItem from './Lists/TranscriptionItem.jsx';
+import Description from './Containers/DescriptionBox.jsx';
 
 export {
     ToggleTheme,
@@ -44,4 +45,5 @@ export {
     SuccessPopup,
     TranscriptionItem,
     TranscriptionList,
+    Description,
 };

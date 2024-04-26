@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 
 const Video = ({ src, subsSrc, currentTime }) => {
     const videoRef = useRef();
-    console.log(currentTime);
 
     const handleCurrentTimeChange = () => {
         if (videoRef.current) {

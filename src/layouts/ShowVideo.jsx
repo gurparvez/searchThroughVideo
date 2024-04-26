@@ -12,6 +12,7 @@ import Video from '../components/Video.jsx';
 import video from '../api/videos.js';
 import ErrorPopup from '../components/Popups/ErrorPopup.jsx';
 import Search from '../Search.js';
+import DescriptionBox from '../components/Containers/DescriptionBox.jsx';
 
 const ShowVideo = () => {
     const { videoKey, ...remainingPath } = useParams();
@@ -47,7 +48,7 @@ const ShowVideo = () => {
             video
                 .getTranscripts(videoDetails?.transcript)
                 .then((res) => {
-                    setSearch(new Search(res))
+                    setSearch(new Search(res));
                 })
                 .catch((err) => {
                     console.log(err);
@@ -87,7 +88,7 @@ const ShowVideo = () => {
 
     return (
         <Container>
-            <h2>{videoDetails?.title}</h2>
+            <h3>{videoDetails?.title}</h3>
             <div className='w-full flex flex-col sm:flex-row *:p-4'>
                 <div className='w-full'>
                     {msg && <ErrorPopup error={msg} />}
@@ -105,12 +106,18 @@ const ShowVideo = () => {
                                 <Video
                                     src={videoDetails?.url}
                                     subsSrc={videoDetails?.subtitle[1]}
-                                    currentTime={selectedSearchResult}
+                                    currentTime={
+                                        selectedSearchResult
+                                            ? selectedSearchResult
+                                            : null
+                                    }
                                 />
                             ) : (
                                 <Video src={videoDetails?.url} />
                             )}
-                            <p>{videoDetails?.description}</p>
+                            <DescriptionBox
+                                description={videoDetails?.description}
+                            />
                         </div>
                     )}
                 </div>
@@ -118,7 +125,13 @@ const ShowVideo = () => {
                     <SearchBar onSearch={setSearchQuery} />
                     {transcriptLoading && <FullPage left='left-0 top-0' />}
                     {transcriptError && <ShowError error={transcriptError} />}
-                    {searchResult && <TranscriptionList transcripts={searchResult} onSelect={setSelectedSearchResult} />}
+                    {searchResult && (
+                        <TranscriptionList
+                            selectedResult={selectedSearchResult}
+                            transcripts={searchResult}
+                            onSelect={setSelectedSearchResult}
+                        />
+                    )}
                 </div>
             </div>
         </Container>
