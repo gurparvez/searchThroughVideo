@@ -6,7 +6,7 @@ import FullPage from './Loaders/FullPage';
 import { useDispatch } from 'react-redux';
 import { logout } from '../store/authSlice.js';
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, toggleSidebar }) => {
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -29,7 +29,9 @@ const Sidebar = () => {
             {isLoading && <FullPage />}
             <aside
                 id='logo-sidebar'
-                className='fixed left-0 top-24 bottom-0 z-0 w-52 pt-5 transition-transform -translate-x-full bg-gray-300 border-r border-gray-200 md:translate-x-0 dark:bg-gray-900 dark:border-gray-700'
+                className={`fixed left-0 top-24 bottom-0 z-40 w-52 pt-5 transition-transform bg-gray-300 border-r border-gray-200 dark:bg-gray-900 dark:border-gray-700 ${
+                    isOpen ? 'translate-x-0' : '-translate-x-full'
+                } md:translate-x-0`}
                 aria-label='Sidebar'>
                 <div className='h-full bg-gray-300 px-3 pb-5 overflow-y-auto dark:bg-gray-900'>
                     <ul className='h-full flex flex-col space-y-2 font-medium justify-between'>
@@ -72,6 +74,11 @@ const Sidebar = () => {
                     </ul>
                 </div>
             </aside>
+            {isOpen && (
+                <div
+                    className='fixed inset-0 bg-black opacity-50 z-30 md:hidden'
+                    onClick={toggleSidebar}></div>
+            )}
         </>
     );
 };

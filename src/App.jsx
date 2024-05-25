@@ -8,6 +8,7 @@ import { login } from './store/authSlice';
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -33,11 +34,18 @@ function App() {
         }
     }, [user]);
 
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    };
+
     return (
         <>
-            <Header classname='bg-gray-300 p-7 dark:bg-gray-900 shadow-2xl text-lg' />
+            <Header
+                toggleSidebar={toggleSidebar}
+                classname='bg-gray-300 p-7 dark:bg-gray-900 shadow-2xl text-lg'
+            />
             {/*TODO: Add a hamburger icon to sidebar in mobile view*/}
-            <Sidebar />
+            <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
             {isLoading ? (
                 <FullPage />
@@ -46,8 +54,6 @@ function App() {
                     <Outlet />
                 </div>
             )}
-
-            {/* TODO 3: add a footer component*/}
         </>
     );
 }
