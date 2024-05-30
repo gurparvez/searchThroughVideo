@@ -5,7 +5,7 @@ const Video = ({ src, subsSrc, currentTime }) => {
 
     const handleCurrentTimeChange = () => {
         if (videoRef.current) {
-            videoRef.current.currentTime = currentTime;
+            if (currentTime) videoRef.current.currentTime = currentTime;
         }
     };
 

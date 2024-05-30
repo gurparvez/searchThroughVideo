@@ -109,7 +109,7 @@ const ShowVideo = () => {
                                     currentTime={
                                         selectedSearchResult
                                             ? selectedSearchResult
-                                            : null
+                                            : undefined
                                     }
                                 />
                             ) : (
