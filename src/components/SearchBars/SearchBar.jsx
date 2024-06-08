@@ -9,20 +9,22 @@ const SearchBar = ({ onSearch, classname }) => {
     };
 
     return (
-        <div className={`w-full mx-auto ${classname}`}>
+        <div className={`mx-auto w-full ${classname}`}>
             <label
                 htmlFor='default-search'
-                className='mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white'>
+                className='sr-only mb-2 text-sm font-medium text-gray-900 dark:text-white'
+            >
                 Search
             </label>
             <div className='relative'>
-                <div className='absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none'>
+                <div className='pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3'>
                     <svg
-                        className='w-4 h-4 text-gray-500 dark:text-gray-400'
+                        className='h-4 w-4 text-gray-500 dark:text-gray-400'
                         aria-hidden='true'
                         xmlns='http://www.w3.org/2000/svg'
                         fill='none'
-                        viewBox='0 0 20 20'>
+                        viewBox='0 0 20 20'
+                    >
                         <path
                             stroke='currentColor'
                             strokeLinecap='round'
@@ -38,7 +40,7 @@ const SearchBar = ({ onSearch, classname }) => {
                     id='default-search'
                     value={searchValue}
                     onChange={handleInputChange}
-                    className='block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+                    className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-4 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
                     placeholder='Type here to Search...'
                     required
                 />

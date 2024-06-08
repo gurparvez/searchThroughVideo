@@ -89,11 +89,11 @@ const ShowVideo = () => {
     return (
         <Container>
             <h3>{videoDetails?.title}</h3>
-            <div className='w-full flex flex-col sm:flex-row *:p-4'>
+            <div className='flex w-full flex-col *:p-4 sm:flex-row'>
                 <div className='w-full'>
                     {msg && <ErrorPopup error={msg} />}
                     {loading ? (
-                        <div className='w-full relative flex justify-center items-center h-80 bg-gray-900'>
+                        <div className='relative flex h-80 w-full items-center justify-center bg-gray-900'>
                             <Spinner
                                 left='left-[45%]'
                                 top='top-[45%]'
@@ -121,7 +121,7 @@ const ShowVideo = () => {
                         </div>
                     )}
                 </div>
-                <div className='w-full relative *:my-5'>
+                <div className='relative w-full *:my-5'>
                     <SearchBar onSearch={setSearchQuery} />
                     {transcriptLoading && <FullPage left='left-0 top-0' />}
                     {transcriptError && <ShowError error={transcriptError} />}

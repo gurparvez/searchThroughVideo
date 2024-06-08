@@ -11,7 +11,8 @@ const TranscriptionList = ({
     return (
         <div>
             <ul
-                className={`w-full relative text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white ${classname}`}>
+                className={`relative w-full rounded-lg border border-gray-200 bg-white text-sm font-medium text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white ${classname}`}
+            >
                 {transcripts?.map((transcript) => {
                     return (
                         <TranscriptionItem

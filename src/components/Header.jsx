@@ -5,12 +5,13 @@ import { FaBars } from 'react-icons/fa';
 
 const Header = ({ toggleSidebar, classname }) => {
     return (
-        <div className='fixed w-full top-0 z-50'>
+        <div className='fixed top-0 z-50 w-full'>
             <div
-                className={`flex flex-row justify-between items-center ${classname}`}>
-                <div className='flex flex-row items-center justify-center *:mx-5 '>
+                className={`flex flex-row items-center justify-between ${classname}`}
+            >
+                <div className='flex flex-row items-center justify-center *:mx-5'>
                     <FaBars
-                        className='text-2xl cursor-pointer md:hidden first:ml-0'
+                        className='cursor-pointer text-2xl first:ml-0 md:hidden'
                         onClick={toggleSidebar}
                     />
                     <NavLink to='/'>

@@ -29,25 +29,28 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             {isLoading && <FullPage />}
             <aside
                 id='logo-sidebar'
-                className={`fixed left-0 top-24 bottom-0 z-40 w-52 pt-5 transition-transform bg-gray-300 border-r border-gray-200 dark:bg-gray-900 dark:border-gray-700 ${
+                className={`fixed bottom-0 left-0 top-24 z-40 w-52 border-r border-gray-200 bg-gray-300 pt-5 transition-transform dark:border-gray-700 dark:bg-gray-900 ${
                     isOpen ? 'translate-x-0' : '-translate-x-full'
                 } md:translate-x-0`}
-                aria-label='Sidebar'>
-                <div className='h-full bg-gray-300 px-3 pb-5 overflow-y-auto dark:bg-gray-900'>
-                    <ul className='h-full flex flex-col space-y-2 font-medium justify-between'>
+                aria-label='Sidebar'
+            >
+                <div className='h-full overflow-y-auto bg-gray-300 px-3 pb-5 dark:bg-gray-900'>
+                    <ul className='flex h-full flex-col justify-between space-y-2 font-medium'>
                         <div>
                             <li>
                                 <NavLink
                                     to='/'
-                                    className='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group'>
+                                    className='group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
+                                >
                                     <span className='ms-3'>My Videos</span>
                                 </NavLink>
                             </li>
                             <li>
                                 <NavLink
                                     to='recent'
-                                    className='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group'>
-                                    <span className='flex-1 ms-3 whitespace-nowrap'>
+                                    className='group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
+                                >
+                                    <span className='ms-3 flex-1 whitespace-nowrap'>
                                         Recently Uploaded
                                     </span>
                                 </NavLink>
@@ -55,8 +58,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                             <li>
                                 <NavLink
                                     to='inProgress'
-                                    className='flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group'>
-                                    <span className='flex-1 ms-3 whitespace-nowrap'>
+                                    className='group flex items-center rounded-lg p-2 text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700'
+                                >
+                                    <span className='ms-3 flex-1 whitespace-nowrap'>
                                         In Progress
                                     </span>
                                 </NavLink>
@@ -76,8 +80,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             </aside>
             {isOpen && (
                 <div
-                    className='fixed inset-0 bg-black opacity-50 z-30 md:hidden'
-                    onClick={toggleSidebar}></div>
+                    className='fixed inset-0 z-30 bg-black opacity-50 md:hidden'
+                    onClick={toggleSidebar}
+                ></div>
             )}
         </>
     );

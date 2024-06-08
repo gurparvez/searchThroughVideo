@@ -14,13 +14,14 @@ const Video = ({ src, subsSrc, currentTime }) => {
     }, [currentTime]);
 
     return (
-        <div className='w-full h-96'>
+        <div className='h-96 w-full'>
             <video
                 ref={videoRef}
                 src={src}
                 controls={true}
-                className='w-full h-full'
-                crossOrigin=''>
+                className='h-full w-full'
+                crossOrigin=''
+            >
                 {subsSrc && (
                     <track
                         label='English'

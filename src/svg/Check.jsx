@@ -8,7 +8,8 @@ const Check = ({ classname }) => {
             viewBox='0 0 24 24'
             strokeWidth={1.5}
             stroke='green'
-            className={`w-6 h-6 ${classname}`}>
+            className={`h-6 w-6 ${classname}`}
+        >
             <path
                 strokeLinecap='round'
                 strokeLinejoin='round'

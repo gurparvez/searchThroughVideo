@@ -30,20 +30,20 @@ const ToggleTheme = ({ classname }) => {
     return (
         <>
             <label
-                className={`inline-flex items-center cursor-pointer ${classname}`}>
+                className={`inline-flex cursor-pointer items-center ${classname}`}>
                 <input
                     type='checkbox'
                     value=''
-                    className='sr-only peer'
+                    className='peer sr-only'
                     onChange={onChangeTheme}
                     checked={themeMode === 'dark'}
                 />
-                {themeMode == 'dark' ? (
+                {themeMode === 'dark' ? (
                     <MdDarkMode size={'30px'} />
                 ) : (
                     <MdLightMode size={'30px'} />
                 )}
-                <span className='hidden sm:inline ms-3 text-lg font-medium text-gray-900 dark:text-gray-300'>
+                <span className='ms-3 hidden text-lg font-medium text-gray-900 dark:text-gray-300 sm:inline'>
                     Theme
                 </span>
             </label>

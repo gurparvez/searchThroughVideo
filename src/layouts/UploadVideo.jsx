@@ -123,14 +123,15 @@ const UploadVideo = () => {
                         video={data}
                         inProcessing={true}
                         progress={uploadProgress}
-                        classname='w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600'>
+                        classname='w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600'
+                    >
                         {title}
                     </VideoItem>
                 </VideosList>
             ) : (
                 <>
-                    <div className='w-full flex flex-col sm:flex-row'>
-                        <div className='flex flex-col w-full sm:w-1/2 justify-center'>
+                    <div className='flex w-full flex-col sm:flex-row'>
+                        <div className='flex w-full flex-col justify-center sm:w-1/2'>
                             {thumbnail ? (
                                 <ShowImage src={thumbnail} classname='w-full' />
                             ) : (
@@ -141,7 +142,7 @@ const UploadVideo = () => {
                             )}
                             {msg && <ShowError error={msg} className='p-4' />}
                         </div>
-                        <div className='flex flex-col justify-center w-full sm:w-1/2 sm:px-10 *:py-4'>
+                        <div className='flex w-full flex-col justify-center *:py-4 sm:w-1/2 sm:px-10'>
                             <Input
                                 label='Title'
                                 value={title}
@@ -154,7 +155,7 @@ const UploadVideo = () => {
                             />
                         </div>
                     </div>
-                    <div className='w-full sm:w-auto self-end *:my-2 sm:*:mx-2 sm:*:my-0'>
+                    <div className='w-full self-end *:my-2 sm:w-auto sm:*:mx-2 sm:*:my-0'>
                         <ButtonRed
                             children='Cancel'
                             onClick={() => navigate('/')}
